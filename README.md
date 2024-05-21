@@ -6,8 +6,6 @@
 
 <div align="center">
 
-<div align="center">
-
 # nonebot-plugin-authrespond
 
 _✨ nonebot简单易用的黑名单插件，实现分插件拉黑用户/群聊/全局 ✨_
