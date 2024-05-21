@@ -87,4 +87,7 @@ _✨ nonebot简单易用的黑名单插件，实现分插件拉黑用户/群聊/
 | #(全局/插件名称)(拉黑/解黑)(全员/用户id) | 主人 | 否 | 私聊/群聊 | 用户操作模式 |
 | #(全局/插件名称)(封禁群/解禁群)(群号/留空封禁所在群) | 主人 | 否 | 私聊/群聊 | 群聊操作模式 |
 
-
+> [!tips]
+> 插件名称为nonebot导入的插件,比如nonebot_plugin_cyberfurry
+> 也可以使用cyberfurry(即去掉nonebot_plugin_)
+> 插件名称检查来源为: nonebot.get_loaded_plugins() 中各属性的 plugin.name
