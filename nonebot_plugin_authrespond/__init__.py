@@ -17,7 +17,7 @@ __plugin_meta__ = PluginMetadata(
     config=cubplugins_permission,
     # 插件配置项类，如无需配置可不填写。
 
-    supported_adapters={"~onebot.v11"},
+    supported_adapters={},
     # 支持的适配器集合，其中 `~` 在此处代表前缀 `nonebot.adapters.`，其余适配器亦按此格式填写。
     # 若插件可以保证兼容所有适配器（即仅使用基本适配器功能）可不填写，否则应该列出插件支持的适配器。
 )

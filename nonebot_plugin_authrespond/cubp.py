@@ -12,9 +12,14 @@ class cubplugins_permission:
         pass
     
     def savedata(self):
+        '''保存数据至本地文件
+        '''
         wdata(conf_name,self.cubplugins_P)
     
     def checkperm(self , modulename:str , user_id:str ):
+        '''
+        检查对用户是否阻断响应 True 阻断 False 响应
+        '''
         globaldata = self.cubplugins_P.get('global',[])
         if user_id in globaldata:
             return True
@@ -26,6 +31,9 @@ class cubplugins_permission:
         return False
     
     def checkpermgroup(self , modulename:str , group_id:str ):
+        '''
+        检查对群组是否阻断响应 True 阻断 False 响应
+        '''
         groupdata = self.cubplugins_P.get('group-global',[])
         if group_id in groupdata:
             return True
@@ -37,6 +45,12 @@ class cubplugins_permission:
         return False
     
     def setperm(self , modulename:str , user_id:str , allow : bool =False):
+        '''
+        设定权限
+        modulename : 插件名称 (组模式则为group-xxxxxx)
+        user_id : 用户id (组模式传入组ID)
+        allow : 是否允许响应 (False则将id拉黑)
+        '''
         if self.cubplugins_P.get(modulename,None) == None:
             self.cubplugins_P[modulename] =[]
         data = self.cubplugins_P[modulename]
