@@ -6,6 +6,7 @@ from nonebot.permission import SUPERUSER
 from nonebot.params import RegexGroup
 from .cubp import cubp
 from .session import  EventSession
+from nonebot_plugin_alconna import UniMessage , At
 try :
     from nonebot.adapters.onebot.v11 import Message as V11Message
 except:
@@ -40,15 +41,13 @@ async def _(
     if "群" in str(args[1]):
         modulename = "group-"+modulename
         isgroupmode =True
-    
-    if session.platform == "qq":
-        uid = V11Message(args[2].strip())
-        atuid = uid['at']
-    else:
-        #其余平台的AT以后再说（
-        atuid = []
         
-        
+    uni_msg = UniMessage()
+    if args[2]:
+        msg: Message = event.get_message()
+        uni_msg = UniMessage.generate_without_reply(message=msg)
+    atuid = uni_msg.get(At)
+
     if args[2] =="":
         if isgroupmode:
             if session.level >=2:
@@ -65,7 +64,8 @@ async def _(
     elif len(atuid) == 0:
         user_id = args[2].strip()
     else:
-        user_id = atuid[0].data["qq"]
+        atmsg :At= atuid[0]
+        user_id = atmsg.target
 
 
     user = user_id if user_id != "0" else "全局(插件停启用)"
