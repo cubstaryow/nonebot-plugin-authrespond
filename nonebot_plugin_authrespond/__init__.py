@@ -1,5 +1,4 @@
 from nonebot.plugin import PluginMetadata
-from loguru import logger
 from .config import cubplugins_permission
 
 __plugin_meta__ = PluginMetadata(

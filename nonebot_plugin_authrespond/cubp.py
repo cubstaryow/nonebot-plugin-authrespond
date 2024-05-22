@@ -1,5 +1,4 @@
-from loguru import logger
-from .plugins_data import wdata , rdata ,initdata ,driver
+from .plugins_data import wdata , rdata ,initdata
 conf_name="cubplugins_permission.json"
 bashdata={'global':[],'group-global':[]}
 initdata(conf_name,bashdata)

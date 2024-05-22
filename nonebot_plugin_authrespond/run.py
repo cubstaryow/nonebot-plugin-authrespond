@@ -1,7 +1,5 @@
-from loguru import logger
-from nonebot import get_driver
+from nonebot import get_driver , logger
 from nonebot.matcher import Matcher
-from nonebot.adapters import Message, Event, Bot
 from nonebot.message import run_preprocessor
 from nonebot.exception import IgnoredException
 from .cubp import cubp
@@ -12,8 +10,6 @@ superusers = get_driver().config.superusers
 
 @run_preprocessor
 async def pass_run(
-    bot: Bot,
-    event: Event,
     matcher: Matcher,
     session: EventSession,
 ):

@@ -7,11 +7,6 @@ from nonebot.params import RegexGroup
 from .cubp import cubp
 from .session import  EventSession
 from nonebot_plugin_alconna import UniMessage , At
-try :
-    from nonebot.adapters.onebot.v11 import Message as V11Message
-except:
-    V11Message = Message
-    pass
 
 turn_push = on_regex(
     r"^#([\S|-]*)(拉黑|解黑|封禁群|解禁群)([\S|-]*)$",
