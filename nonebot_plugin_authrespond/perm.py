@@ -5,7 +5,7 @@ from nonebot.matcher import Matcher
 from nonebot.permission import SUPERUSER
 from nonebot.params import RegexGroup
 from .cubp import cubp
-from .session import  EventSession
+from nonebot_plugin_session import EventSession
 from nonebot_plugin_alconna import UniMessage , At
 
 turn_push = on_regex(

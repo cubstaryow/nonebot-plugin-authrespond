@@ -3,7 +3,7 @@ from nonebot.matcher import Matcher
 from nonebot.message import run_preprocessor
 from nonebot.exception import IgnoredException
 from .cubp import cubp
-from .session import EventSession
+from nonebot_plugin_session import EventSession
 
 superusers = get_driver().config.superusers
 
