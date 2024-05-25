@@ -6,8 +6,6 @@ import json
 from nonebot.log import logger
 driver = get_driver()
 if config.cubplugin_datadir=="":
-    from nonebot import require
-    require("nonebot_plugin_localstore")
     import nonebot_plugin_localstore as store
     # 插件数据代理
     data_dir = store.get_data_dir("cubplugins")
