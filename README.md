@@ -34,6 +34,8 @@ _✨ nonebot简单易用的黑名单插件，全平台支持，实现分插件�
 
 已经支持白名单 , 即忽略黑名单设定, 未经测试，有问题提issue
 
+请注意,本插件的实现均由 [cubp.py](https://github.com/cubstaryow/nonebot-plugin-authrespond/blob/master/nonebot_plugin_authrespond/cubp.py "nonebot_plugin_authrespond/cubp.py")实现,其余开发着可调用此模块进行插件内自动处理黑白名单.
+
 ## 💿 安装
 
 <details open>
