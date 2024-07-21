@@ -9,7 +9,7 @@ from nonebot_plugin_session import EventSession
 from nonebot_plugin_alconna import UniMessage , At
 
 turn_push = on_regex(
-    r"^#([\S|-]*)(拉黑|解黑|封禁群|解禁群)([\S|-]*)$",
+    r"^#([\S|-]*)(拉黑|解黑|封禁群|解禁群|去群白|去白|加白|加群白)([\S|-]*)$",
     block=True,
     priority=2,
     permission=SUPERUSER
@@ -23,20 +23,25 @@ async def _(
 ):
     
     modulename = args[0]
+    
     if modulename.startswith("nonebot_plugin_"):
         modulename = modulename.replace("nonebot_plugin_", "")
     pluginslist = await getpluginslist()
     if  modulename not in pluginslist and modulename not in ["全局","all"]:
         await matcher.finish("[Failed]不存在此模块")
+    themodulename = modulename
     if modulename in ["全局","all"] :
         modulename = "global"
     isgroupmode = False
     
-    
+
     if "群" in str(args[1]):
         modulename = "group-"+modulename
         isgroupmode =True
-        
+
+    if "白" in str(args[1]):
+        modulename = "!-"+modulename
+
     uni_msg = UniMessage()
     if args[2]:
         msg: Message = event.get_message()
@@ -56,6 +61,8 @@ async def _(
             await matcher.finish("[Failed]群组操作模式下无法操作全体(虽然支持但是请使用用户模式)")
         else:
             user_id = "0"
+            if modulename.startswith("!-"):
+                await matcher.finish("[Failed]白名单无法应用于全局(对象)")
     elif len(atuid) == 0:
         user_id = args[2].strip()
     else:
@@ -67,16 +74,22 @@ async def _(
     user = "群"+user if isgroupmode else user
     check = False
     mode="禁止"
-    if str(args[1]) in ["解禁","解黑","解禁群"]:
+    if str(args[1]) in ["解黑","解禁群"]:
         check = True
         mode="允许"
+    if "白" in str(args[1]):
+        mode="始终允许(忽略黑名单)"
+        if "去" in str(args[1]):
+            mode="重新设定(去白名单)"
+            check = True
+        
         
     ret = cubp.setperm(modulename,user_id,check)
     
     
     msg = f"[cubp-W]操作失败,可能已经{str(args[1])}"
     if ret:
-        msg = f"[cubp-I]已{mode}{modulename}响应{user}"
+        msg = f"[cubp-I]已{mode}{themodulename}响应{user}"
     await matcher.finish(msg)
     
 async def getpluginslist():
