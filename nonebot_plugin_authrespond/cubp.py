@@ -52,9 +52,9 @@ class cubplugins_permission:
     def setperm(self , modulename:str , user_id:str , allow : bool =False):
         '''
         设定权限
-        modulename : 插件名称 (组模式则为group-xxxxxx)(白名单为 !-xxxxxxx)
+        modulename : 插件名称 (组模式则为group-xxx)(白名单为!-xxx/!-group-xxx)
         user_id : 用户id (组模式传入组ID)
-        allow : 是否允许响应 (False则将id拉黑)
+        allow : 是否允许响应 (False将id加入名单列表,True为删除id)
         '''
         if self.cubplugins_P.get(modulename,None) == None:
             self.cubplugins_P[modulename] =[]
