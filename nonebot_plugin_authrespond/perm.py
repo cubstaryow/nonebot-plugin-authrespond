@@ -11,7 +11,7 @@ from nonebot_plugin_alconna import UniMessage , At
 turn_push = on_regex(
     r"^#([\S|-]*)(拉黑|解黑|封禁群|解禁群|去群白|去白|加白|加群白)([\S|-]*)$",
     block=True,
-    priority=2,
+    priority=1,
     permission=SUPERUSER
 )
 @turn_push.handle()
