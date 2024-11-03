@@ -18,36 +18,40 @@ class cubplugins_permission:
     def checkperm(self , modulename:str , user_id:str ):
         '''
         检查对用户是否阻断响应 True 阻断 False 响应
+        
+        返回  是否阻断bool  阻断模式 ["allow","black","white"]
         '''
         globaldata = self.cubplugins_P.get('global',[])
         #白名单检查，优先级最高
         if user_id in self.cubplugins_P.get("!-"+modulename,[]):
-            return False
+            return False , "white"
         #全局拉黑检查
         if user_id in globaldata:
-            return True
+            return True , "black"
         #插件响应检查
         data = self.cubplugins_P.get(modulename,[])
         if user_id in data or '0' in data:
-            return True
-        return False
+            return True , "black"
+        return False , "allow"
     
     def checkpermgroup(self , modulename:str , group_id:str ):
         '''
         检查对群组是否阻断响应 True 阻断 False 响应
+        
+        返回  是否阻断bool  阻断模式 ["allow","black","white"]
         '''
         groupdata = self.cubplugins_P.get('group-global',[])
         #白名单检查，优先级最高
         if group_id in self.cubplugins_P.get("!-group-"+modulename,[]):
-            return False
+            return False , "white"
         #全局拉黑检查
         if group_id in groupdata:
-            return True
+            return True , "black"
         #插件响应检查
         data = self.cubplugins_P.get('group-'+modulename,[])
         if group_id in data:
-            return True
-        return False
+            return True , "black"
+        return False , "allow"
     
     def setperm(self , modulename:str , user_id:str , allow : bool =False):
         '''
