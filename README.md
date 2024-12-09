@@ -103,3 +103,9 @@ _✨ nonebot简单易用的黑名单插件，全平台支持，实现分插件�
 > 插件名称为nonebot导入的插件,比如nonebot_plugin_cyberfurry
 > 也可以使用cyberfurry(即去掉nonebot_plugin_)
 > 插件名称检查来源为: nonebot.get_loaded_plugins() 中各属性的 plugin.name
+
+> 超级管理员默认为白名单 , 即忽略对superuser的拦截.
+> 若拦截规则匹配成功则会有一条等级为 warning 的日志,如下
+```log
+12-09 09:17:46|WARNING|cubV5|-cubplugins_permission- ID 012345678 group is not allow run jrrp
+```
