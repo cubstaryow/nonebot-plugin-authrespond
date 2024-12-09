@@ -107,5 +107,5 @@ _✨ nonebot简单易用的黑名单插件，全平台支持，实现分插件�
 > 超级管理员默认为白名单 , 即忽略对superuser的拦截.
 > 若拦截规则匹配成功则会有一条等级为 warning 的日志,如下
 ```bash
-12-09 09:17:46|WARNING|cubV5|-cubplugins_permission- ID 012345678 group is not allow run jrrp
+12-09 09:17:46|WARNING|-nonebot_plugin_authrespond- ID 012345678 group is not allow run jrrp
 ```
